@@ -3,23 +3,32 @@ import React from "react";
 
 export default function GoalItem({ item, removeGoal }) {
   return (
-    <Pressable onPress={() => removeGoal(item.id)}>
-      <View style={styles.goalItem}>
+    <View style={styles.goalItem}>
+      <Pressable
+        // Android has a special effects that are ready for me to use
+        android_ripple={{ color: "dddddd" }}
+        onPress={() => removeGoal(item.id)}
+        // In case I want a special effect I have to do it manually for IOS
+        style={({ pressed }) => pressed && styles.pressedItem}
+      >
         <Text style={styles.goalText}>{item.text}</Text>
-      </View>
-    </Pressable>
+      </Pressable>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   goalItem: {
     margin: 8,
-    padding: 8,
     borderRadius: 6,
     backgroundColor: "#5e08cc",
-    alignItems: "center",
   },
   goalText: {
     color: "white",
+    padding: 8,
+    alignSelf: "center",
+  },
+  pressedItem: {
+    opacity: 0.5,
   },
 });
