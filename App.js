@@ -1,5 +1,6 @@
 import { StyleSheet, View, FlatList, Button } from "react-native";
 import { useState } from "react";
+import { StatusBar } from "expo-status-bar";
 import GoalItem from "./components/GoalItem";
 import GoalInput from "./components/GoalInput";
 
@@ -30,37 +31,40 @@ export default function App() {
   console.log(goals);
 
   return (
-    <View style={styles.appContainer}>
-      <Button
-        onPress={startAddGoalHandler}
-        color="#5e08cc"
-        title="Add New Goal"
-      />
-
-      <GoalInput
-        visible={modalIsVisible}
-        addGoal={(goalInput) => addGoalHandler(goalInput)}
-        onCancel={() => endAddGoalHandler()}
-      />
-
-      <View style={styles.goalsCotainer}>
-        <FlatList
-          data={goals}
-          keyExtractor={(item, index) => {
-            return item.id;
-          }}
-          renderItem={(itemData) => {
-            return (
-              <GoalItem
-                removeGoal={(id) => removeGoalHandler(id)}
-                item={itemData.item}
-              />
-            );
-          }}
-          alwaysBounceVertical={false}
+    <>
+      <StatusBar style="light" />
+      <View style={styles.appContainer}>
+        <Button
+          onPress={startAddGoalHandler}
+          color="#5e08cc"
+          title="Add New Goal"
         />
+
+        <GoalInput
+          visible={modalIsVisible}
+          addGoal={(goalInput) => addGoalHandler(goalInput)}
+          onCancel={endAddGoalHandler}
+        />
+
+        <View style={styles.goalsCotainer}>
+          <FlatList
+            data={goals}
+            keyExtractor={(item, index) => {
+              return item.id;
+            }}
+            renderItem={(itemData) => {
+              return (
+                <GoalItem
+                  removeGoal={(id) => removeGoalHandler(id)}
+                  item={itemData.item}
+                />
+              );
+            }}
+            alwaysBounceVertical={false}
+          />
+        </View>
       </View>
-    </View>
+    </>
   );
 }
 

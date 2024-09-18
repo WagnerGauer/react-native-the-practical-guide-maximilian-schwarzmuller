@@ -1,4 +1,12 @@
-import { StyleSheet, Text, View, TextInput, Button, Modal } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  Button,
+  Modal,
+  Image,
+} from "react-native";
 import { useState } from "react";
 
 const GoalInput = ({ addGoal, visible, onCancel }) => {
@@ -18,6 +26,10 @@ const GoalInput = ({ addGoal, visible, onCancel }) => {
   return (
     <Modal visible={visible} animationType="slide">
       <View style={styles.inputContainer}>
+        <Image
+          style={styles.image}
+          source={require("../assets/images/goal.png")}
+        />
         <TextInput
           style={styles.textInput}
           placeholder="Your course goal!"
@@ -26,10 +38,10 @@ const GoalInput = ({ addGoal, visible, onCancel }) => {
         />
         <View style={styles.buttonContainer}>
           <View style={styles.button}>
-            <Button onPress={handlePress} title="Add Goal" />
+            <Button onPress={onCancel} color="#f31282" title="Cancel" />
           </View>
           <View style={styles.button}>
-            <Button onPress={onCancel} title="Cancel" />
+            <Button onPress={handlePress} color="#5e0acc" title="Add Goal" />
           </View>
         </View>
       </View>
@@ -44,14 +56,20 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    marginBottom: 24,
-    borderBottomWidth: 1,
-    borderBottomColor: "#cccccc",
     padding: 16,
+    backgroundColor: "#311b6b",
+  },
+  image: {
+    width: 100,
+    height: 100,
+    margin: 20,
   },
   textInput: {
     borderWidth: 1,
-    borderColor: "#cccccc",
+    borderColor: "#e4d0ff",
+    backgroundColor: "#e4d0ff",
+    color: "#120438",
+    borderRadius: 6,
     width: "100%",
     padding: 8,
   },
