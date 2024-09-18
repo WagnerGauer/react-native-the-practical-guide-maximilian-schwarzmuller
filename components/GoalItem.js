@@ -1,7 +1,7 @@
-import { StyleSheet, Text, View, Pressable } from "react-native";
+import { StyleSheet, Text, View, Pressable, Modal } from "react-native";
 import React from "react";
 
-export default function GoalItem({ item, removeGoal }) {
+export default function GoalItem({ item, removeGoal, visible }) {
   return (
     <View style={styles.goalItem}>
       <Pressable
