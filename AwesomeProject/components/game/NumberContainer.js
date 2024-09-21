@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     padding: 24,
     margin: 24,
     borderRadius: 8,
-    alignContent: "center",
+    alignItems: "center",
     justifyContent: "center",
   },
   numberText: {
