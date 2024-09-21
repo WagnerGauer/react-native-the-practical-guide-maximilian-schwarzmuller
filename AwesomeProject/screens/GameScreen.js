@@ -1,4 +1,4 @@
-import { Alert, FlatList, StyleSheet, Text, View } from "react-native";
+import { Alert, StyleSheet, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import PrimaryButton from "../components/ui/PrimaryButton";
 import Title from "../components/ui/Title";
@@ -21,7 +21,8 @@ const GameScreen = ({ userNumber, onGameOver }) => {
 
   console.log(userNumber, currentGuess);
   useEffect(() => {
-    if (currentGuess === userNumber) {
+    if (currentGuess == userNumber) {
+      console.log("this should fire");
       onGameOver();
     }
   }, [currentGuess, userNumber, onGameOver]);
@@ -65,8 +66,6 @@ const GameScreen = ({ userNumber, onGameOver }) => {
           </PrimaryButton>
         </View>
       </View>
-      {/* <FlatList data={tries} /> */}
-      {/* {guess === 63 ? <Text>You Got it!</Text> : null} */}
     </View>
   );
 };

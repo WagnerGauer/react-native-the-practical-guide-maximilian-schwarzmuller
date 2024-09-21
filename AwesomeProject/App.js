@@ -17,13 +17,13 @@ export default function App() {
 
   let screen = <StartGameScreen onConfirmNumber={pickedNumberHandler} />;
 
+  function handleGameOver() {
+    console.log("Game is over!");
+    setGameIsOver(true);
+  }
+
   if (userNumber) {
-    screen = (
-      <GameScreen
-        onGameOver={() => setGameIsOver(true)}
-        userNumber={userNumber}
-      />
-    );
+    screen = <GameScreen onGameOver={handleGameOver} userNumber={userNumber} />;
   }
   if (gameIsOver & userNumber) {
     screen = <GameOverScreen />;
