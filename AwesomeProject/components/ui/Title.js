@@ -1,11 +1,11 @@
 import { StyleSheet, Text, View, useWindowDimensions } from "react-native";
 import React from "react";
-const Title = ({ children }) => {
+const Title = ({ children, extraStyles }) => {
   const { width, height } = useWindowDimensions();
 
   const marginTopDistance = height < 400 ? 80 : 100;
   return (
-    <Text style={[styles.title, { marginTop: marginTopDistance }]}>
+    <Text style={[styles.title, { marginTop: marginTopDistance }, extraStyles]}>
       {children}
     </Text>
   );
