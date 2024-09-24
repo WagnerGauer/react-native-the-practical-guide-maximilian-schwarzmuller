@@ -42,7 +42,9 @@ export default function App() {
   if (userNumber) {
     screen = <GameScreen onGameOver={handleGameOver} userNumber={userNumber} />;
   }
+  console.log(`gameIsOver: ${gameIsOver}, userNumber: ${userNumber}`);
   if (gameIsOver & userNumber) {
+    console.log("Game over screen should be the component");
     screen = (
       <GameOverScreen
         userNumber={userNumber}
