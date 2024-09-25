@@ -24,7 +24,7 @@ const MealsOverviewScreen = ({ route, navigation }) => {
   }, [catId, navigation]);
 
   function renderMealItem({ item }) {
-    const { title, imageUrl, affordability, complexity, duration } = item;
+    const { id, title, imageUrl, affordability, complexity, duration } = item;
 
     const mealItemProps = {
       title,
@@ -32,6 +32,7 @@ const MealsOverviewScreen = ({ route, navigation }) => {
       affordability,
       complexity,
       duration,
+      id,
     };
 
     return <MealItem {...mealItemProps} />;

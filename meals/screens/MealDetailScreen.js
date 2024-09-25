@@ -1,13 +1,12 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 
+import { MEALS } from "../data/dummy-data";
+
 const MealDetail = ({ route }) => {
-  const mealItem = route.params.mealItem;
-  return (
-    <View>
-      <Text>MealDetail</Text>
-    </View>
-  );
+  const mealId = route.params.mealId;
+  const meal = MEALS.find((meal) => meal.id === mealId);
+  return <View>{<Text>{meal.title}</Text>}</View>;
 };
 
 export default MealDetail;

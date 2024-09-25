@@ -9,11 +9,18 @@ import {
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 
-const MealItem = ({ title, imageUrl, affordability, complexity, duration }) => {
+const MealItem = ({
+  id,
+  title,
+  imageUrl,
+  affordability,
+  complexity,
+  duration,
+}) => {
   const navigation = useNavigation();
 
   function pressHandler() {
-    // navigation.navigate("MealDetail", { mealItem: mealItem });
+    navigation.navigate("MealDetail", { mealId: id });
   }
 
   return (
