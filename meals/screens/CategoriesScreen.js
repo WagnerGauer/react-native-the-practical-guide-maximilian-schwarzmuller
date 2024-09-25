@@ -1,11 +1,17 @@
 import { StyleSheet, Text, View, FlatList, Dimensions } from "react-native";
-import React from "react";
+import React, { useTransition } from "react";
 import { CATEGORIES } from "../data/dummy-data";
 import CategoryComponent from "../components/CategoryComponent";
 
 const MealsCategories = ({ navigation }) => {
-  function pressHandler() {
-    navigation.navigate("MealsOverview");
+  function renderCategoryItem(itemData) {
+    function pressHandler() {
+      navigation.navigate("MealsOverview", { categoryId: itemData.item.id });
+    }
+
+    return (
+      <CategoryComponent onPress={pressHandler} category={itemData.item} />
+    );
   }
 
   console.log(CATEGORIES);
@@ -16,9 +22,7 @@ const MealsCategories = ({ navigation }) => {
         style={styles.listContainer}
         keyExtractor={(category) => category.id}
         data={CATEGORIES}
-        renderItem={({ item }) => (
-          <CategoryComponent onPress={pressHandler} category={item} />
-        )}
+        renderItem={renderCategoryItem}
         numColumns={2}
       />
     </View>
