@@ -1,12 +1,16 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import React from "react";
 
-const CategoryComponent = ({ category }) => {
+const CategoryComponent = ({ category, onPress }) => {
   return (
     <View
       style={[styles.categoryComponent, { backgroundColor: category.color }]}
     >
-      <Pressable android_ripple={{ color: "#cccccc" }} style={styles.button}>
+      <Pressable
+        android_ripple={{ color: "#cccccc" }}
+        style={styles.button}
+        onPress={onPress}
+      >
         <View style={styles.titleContainer}>
           <Text style={styles.title}>{category.title}</Text>
         </View>

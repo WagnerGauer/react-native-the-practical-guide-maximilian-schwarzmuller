@@ -3,7 +3,11 @@ import React from "react";
 import { CATEGORIES } from "../data/dummy-data";
 import CategoryComponent from "../components/CategoryComponent";
 
-const HomeScreen = () => {
+const MealsCategories = ({ navigation }) => {
+  function pressHandler() {
+    navigation.navigate("MealsOverview");
+  }
+
   console.log(CATEGORIES);
   return (
     <View style={styles.screen}>
@@ -12,14 +16,16 @@ const HomeScreen = () => {
         style={styles.listContainer}
         keyExtractor={(category) => category.id}
         data={CATEGORIES}
-        renderItem={({ item }) => <CategoryComponent category={item} />}
+        renderItem={({ item }) => (
+          <CategoryComponent onPress={pressHandler} category={item} />
+        )}
         numColumns={2}
       />
     </View>
   );
 };
 
-export default HomeScreen;
+export default MealsCategories;
 
 const styles = StyleSheet.create({
   title: {
