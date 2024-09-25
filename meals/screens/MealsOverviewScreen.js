@@ -12,7 +12,17 @@ const MealsOverviewScreen = ({ route }) => {
   );
 
   function renderMealItem({ item }) {
-    return <MealItem mealItem={item} />;
+    const { title, imageUrl, affordability, complexity, duration } = item;
+
+    const mealItemProps = {
+      title,
+      imageUrl,
+      affordability,
+      complexity,
+      duration,
+    };
+
+    return <MealItem {...mealItemProps} />;
   }
 
   return (

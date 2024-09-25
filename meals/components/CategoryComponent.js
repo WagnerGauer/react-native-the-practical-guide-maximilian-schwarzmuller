@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Platform, Pressable, StyleSheet, Text, View } from "react-native";
 import React from "react";
 
 const CategoryComponent = ({ category, onPress }) => {
@@ -8,7 +8,10 @@ const CategoryComponent = ({ category, onPress }) => {
     >
       <Pressable
         android_ripple={{ color: "#cccccc" }}
-        style={styles.button}
+        style={({ pressed }) => [
+          styles.button,
+          pressed ? styles.buttonPressed : null,
+        ]}
         onPress={onPress}
       >
         <View style={styles.titleContainer}>
@@ -30,10 +33,17 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     borderRadius: 8,
     elevation: 4,
-    overflow: "hidden",
+    shadowColor: "black",
+    shadowOpacity: 0.25,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 8,
+    overflow: Platform.OS === "android" ? "hidden" : "visible",
   },
   button: {
     flex: 1,
+  },
+  buttonPressed: {
+    opacity: 0.5,
   },
   titleContainer: {
     flex: 1,
