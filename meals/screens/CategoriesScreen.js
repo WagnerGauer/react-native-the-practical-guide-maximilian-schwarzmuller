@@ -17,7 +17,6 @@ const MealsCategories = ({ navigation }) => {
   console.log(CATEGORIES);
   return (
     <View style={styles.screen}>
-      <Text style={styles.title}>Choose a Category!</Text>
       <FlatList
         style={styles.listContainer}
         keyExtractor={(category) => category.id}
